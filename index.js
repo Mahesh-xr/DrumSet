@@ -26,10 +26,21 @@ function returnSound(key){
                         console.log(this.innerHTML);
              }
 }
+// Add button animation
+function addbuttonAnimation(key){
+    var currenButton = document.querySelector('.'+ key);
+    currenButton.classList.add("pressed");
+    setTimeout(function(){
+        currenButton.classList.remove("pressed");
+    }, 100)
+}
+
+
 // Detects the key stroke
 
 document.addEventListener("keydown",function(event){
     returnSound(event.key);
+    addbuttonAnimation(event.key);
 })
 
  // Detectes Cursor press
@@ -38,6 +49,8 @@ allbuttons = document.querySelectorAll("button");
 for(var index=0;index<allbuttons.length;index++){
              allbuttons[index].addEventListener('click',function (){
                   returnSound(this.innerHTML);   
+                  addbuttonAnimation(this.innerHTML);
+
              })
 };
 
